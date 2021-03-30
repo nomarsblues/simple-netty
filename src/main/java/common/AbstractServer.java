@@ -8,11 +8,10 @@ import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.util.concurrent.EventExecutorGroup;
 
 import java.util.Optional;
-import java.util.Random;
 
 public abstract class AbstractServer implements Server {
-    public String start() {
-        int port = new Random().nextInt(65535);
+    @Override
+    public void start(int port) {
         EventLoopGroup bossGroup = bossGroup();
         EventLoopGroup workerGroup = workerGroup();
         try {
@@ -28,7 +27,6 @@ public abstract class AbstractServer implements Server {
             Optional.ofNullable(bossGroup).ifPresent(EventExecutorGroup::shutdownGracefully);
             Optional.ofNullable(workerGroup).ifPresent(EventExecutorGroup::shutdownGracefully);
         }
-        return "127.0.0.1:" + port;
     }
 
     protected abstract void bootStrap(ServerBootstrap bootstrap, EventLoopGroup bossGroup, EventLoopGroup workerGroup);
