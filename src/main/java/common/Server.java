@@ -1,5 +1,5 @@
 package common;
 
 public interface Server {
-    String start();
+    void start(int port);
 }

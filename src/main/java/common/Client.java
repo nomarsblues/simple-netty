@@ -1,7 +1,7 @@
 package common;
 
 public interface Client {
-    void connect(String addr);
+    void connect(int port);
 
     void send(Object o);
 }
