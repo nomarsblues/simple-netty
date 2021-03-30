@@ -29,17 +29,5 @@ public abstract class AbstractClient implements Client {
         }
     }
 
-    @Override
-    public void send(Object o) {
-        try {
-            sender.channel().writeAndFlush(Unpooled.copiedBuffer(o.toString(), CharsetUtil.UTF_8)).sync();
-            System.out.println("client send " + o.toString());
-        } catch (Exception e) {
-            e.printStackTrace();
-            group.shutdownGracefully();
-        }
-    }
-
-
     protected abstract EventLoopGroup group();
 }
