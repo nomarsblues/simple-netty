@@ -3,11 +3,9 @@ package common;
 import handler.ChannelInitializerFactory;
 import handler.ClientHandlerFactory;
 import io.netty.bootstrap.Bootstrap;
-import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.EventLoopGroup;
 import io.netty.channel.socket.nio.NioSocketChannel;
-import io.netty.util.CharsetUtil;
 
 public abstract class AbstractClient implements Client {
 

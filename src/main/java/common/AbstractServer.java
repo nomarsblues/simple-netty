@@ -17,8 +17,7 @@ public abstract class AbstractServer implements Server {
         try {
             ServerBootstrap bootstrap = new ServerBootstrap();
             bootstrap.channel(NioServerSocketChannel.class)
-                    .option(ChannelOption.SO_BACKLOG, 128)
-                    .childOption(ChannelOption.SO_KEEPALIVE, true);
+                    .option(ChannelOption.SO_BACKLOG, 128);
             bootStrap(bootstrap, bossGroup, workerGroup);
             ChannelFuture channelFuture = bootstrap.bind(port).sync();
             System.out.println("start netty on " + port);
